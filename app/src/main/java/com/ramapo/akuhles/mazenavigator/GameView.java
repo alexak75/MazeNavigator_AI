@@ -1,10 +1,12 @@
 package com.ramapo.akuhles.mazenavigator;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 
 /**
@@ -68,8 +70,8 @@ public class GameView extends View {
                 red);
         //draw the finishing point indicator
         canvas.drawText("F",
-                (mazeFinishX * totalCellWidth)+(cellWidth*0.25f),
-                (mazeFinishY * totalCellHeight)+(cellHeight*0.75f),
+                (mazeFinishX * totalCellWidth) + (cellWidth * 0.25f),
+                (mazeFinishY * totalCellHeight) + (cellHeight * 0.75f),
                 red);
     }
 
@@ -106,8 +108,27 @@ public class GameView extends View {
                 return super.onKeyDown(keyCode,evt);
         }
         if(moved) {
-            //the ball was moved so we'll re-draw the view
+            //the ball was moved so we'll redraw the view
             invalidate();
+            if(maze.isGameComplete()) {
+                //game completed
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle(context.getText(R.string.finished_title));
+                LayoutInflater inflater = context.getLayoutInflater();
+                View view = inflater.inflate(R.layout.finish, null);
+                builder.setView(view);
+                View closeButton =view.findViewById(R.id.closeGame);
+                closeButton.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View clicked) {
+                        if(clicked.getId() == R.id.closeGame) {
+                            context.finish();
+                        }
+                    }
+                });
+                AlertDialog finishDialog = builder.create();
+                finishDialog.show();
+            }
         }
         return true;
     }

@@ -20,7 +20,9 @@ public class Maze implements Serializable {
 
 
     //setters and getters
-
+    public boolean isGameComplete() {
+        return gameComplete;
+    }
     public boolean[][] getHorizontalLines() {
         return horizontalLines;
     }
