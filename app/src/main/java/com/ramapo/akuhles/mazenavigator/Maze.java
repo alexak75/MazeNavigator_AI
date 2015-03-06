@@ -18,12 +18,32 @@ public class Maze implements Serializable {
     private int finalX, finalY;       //stores the finishing point of the maze
     private boolean gameComplete;
 
+
     //setters and getters
+
+    public boolean[][] getHorizontalLines() {
+        return horizontalLines;
+    }
+    public boolean[][] getVerticalLines() {
+        return verticalLines;
+    }
+    public int getMazeWidth() {
+        return sizeX;
+    }
+    public int getMazeHeight() {
+        return sizeY;
+    }
     public void setHorizontalLines(boolean[][] horizontalLines) {
         this.horizontalLines = horizontalLines;
     }
     public void setVerticalLines(boolean[][] verticalLines) {
         this.verticalLines = verticalLines;
+    }
+    public int getCurrentX() {
+        return currentX;
+    }
+    public int getCurrentY() {
+        return currentY;
     }
     public void setStartPosition(int x, int y) {
 
@@ -31,6 +51,13 @@ public class Maze implements Serializable {
     public void setFinalPosition(int x, int y) {
 
     }
+    public int getFinalX() {
+        return finalX;
+    }
+    public int getFinalY() {
+        return finalY;
+    }
+
 
     public boolean move(int direction) {
         boolean moved = false;

@@ -7,5 +7,8 @@
     <string name="btn_newmaze">New Maze</string>
     <string name="btn_exit">Exit</string>
     <string name="levelSelect">Select Maze</string>
+    <string name="finished_title">Congrats!</string>
+    <string name="finished_text">Level cleared</string>
+    <string name="finished_button">End Game</string>
 
 </resources>
