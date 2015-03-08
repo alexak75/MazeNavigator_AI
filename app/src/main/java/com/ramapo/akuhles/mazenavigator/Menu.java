@@ -24,7 +24,7 @@ public class Menu extends Activity implements View.OnClickListener {
     }
 
     public void onClick(View view) {
-        //check which button was clicked with its id
+        // Check which button was clicked with its id
         switch(view.getId()) {
             case R.id.bExit:
                 finish();
@@ -35,9 +35,9 @@ public class Menu extends Activity implements View.OnClickListener {
                 builder.setTitle(getString(R.string.levelSelect));
                 builder.setItems(levels, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int item) {
-                        Intent game = new Intent(Menu.this,Game.class);  //create an Intent to launch the Game Activity
-                        Maze maze = MazeCreator.getMaze(item+1);         //use helper class for creating the Maze
-                        game.putExtra("maze", maze);                     //add the maze to the intent which we'll retrieve in the Maze Activity
+                        Intent game = new Intent(Menu.this,Game.class);  // Create an Intent to launch the Game Activity
+                        Maze maze = MazeCreator.getMaze(item+1);         // Use helper class for creating the Maze
+                        game.putExtra("maze", maze);                     // Add the maze to the intent which we'll retrieve in the Maze Activity
                         startActivity(game);
                     }
                 });

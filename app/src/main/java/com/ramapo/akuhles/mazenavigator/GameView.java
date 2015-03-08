@@ -34,18 +34,18 @@ public class GameView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        //fill in the background
-        canvas.drawRect(0, 0, width, height, background);
+        // Fill in the background
+        canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), background);
 
         boolean[][] hLines = maze.getHorizontalLines();
         boolean[][] vLines = maze.getVerticalLines();
-        //iterate over the boolean arrays to draw walls
+        // Iterate over the boolean arrays to draw walls
         for(int i = 0; i < mazeSizeX; i++) {
             for(int j = 0; j < mazeSizeY; j++){
                 float x = j * totalCellWidth;
                 float y = i * totalCellHeight;
                 if(j < mazeSizeX - 1 && vLines[i][j]) {
-                    //we'll draw a vertical line
+                    // We'll draw a vertical line
                     canvas.drawLine(x + cellWidth,   //start X
                             y,               //start Y
                             x + cellWidth,   //stop X
@@ -53,22 +53,22 @@ public class GameView extends View {
                             line);
                 }
                 if(i < mazeSizeY - 1 && hLines[i][j]) {
-                    //we'll draw a horizontal line
-                    canvas.drawLine(x,               //startX
-                            y + cellHeight,  //startY
-                            x + cellWidth,   //stopX
-                            y + cellHeight,  //stopY
+                    // We'll draw a horizontal line
+                    canvas.drawLine(x,               // startX
+                            y + cellHeight,  // startY
+                            x + cellWidth,   // stopX
+                            y + cellHeight,  // stopY
                             line);
                 }
             }
         }
         int currentX = maze.getCurrentX(),currentY = maze.getCurrentY();
-        //draw the ball
-        canvas.drawCircle((currentX * totalCellWidth)+(cellWidth/2),   //x of center
-                (currentY * totalCellHeight)+(cellWidth/2),  //y of center
-                (cellWidth*0.45f),                           //radius
+        // Draw the ball
+        canvas.drawCircle((currentX * totalCellWidth)+(cellWidth/2),   // X of center
+                (currentY * totalCellHeight)+(cellWidth/2),  // Y of center
+                (cellWidth*0.45f),                           // Radius
                 red);
-        //draw the finishing point indicator
+        // Draw the finishing point indicator
         canvas.drawText("F",
                 (mazeFinishX * totalCellWidth) + (cellWidth * 0.25f),
                 (mazeFinishY * totalCellHeight) + (cellHeight * 0.75f),
@@ -77,9 +77,9 @@ public class GameView extends View {
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        width = (w < h)?w:h;    //check whether the width or height of the screen is smaller
-        height = width;         //for now square mazes
-        lineWidth = 1;          //for now 1 pixel wide walls
+        width = (w < h)?w:h;    // Check whether the width or height of the screen is smaller
+        height = width;         // For now square mazes
+        lineWidth = 1;          // For now 1 pixel wide walls
         cellWidth = (width - ((float)mazeSizeX*lineWidth)) / mazeSizeX;
         totalCellWidth = cellWidth+lineWidth;
         cellHeight = (height - ((float)mazeSizeY*lineWidth)) / mazeSizeY;
@@ -108,16 +108,16 @@ public class GameView extends View {
                 return super.onKeyDown(keyCode,evt);
         }
         if(moved) {
-            //the ball was moved so we'll redraw the view
+            // The ball was moved so we'll redraw the view
             invalidate();
             if(maze.isGameComplete()) {
-                //game completed
+                // Game completed
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle(context.getText(R.string.finished_title));
                 LayoutInflater inflater = context.getLayoutInflater();
                 View view = inflater.inflate(R.layout.finish, null);
                 builder.setView(view);
-                View closeButton =view.findViewById(R.id.closeGame);
+                View closeButton = view.findViewById(R.id.closeGame);
                 closeButton.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View clicked) {

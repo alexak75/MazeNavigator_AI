@@ -13,9 +13,9 @@ public class Maze implements Serializable {
 
     private boolean[][] verticalLines;
     private boolean[][] horizontalLines;
-    private int sizeX, sizeY;         //stores the width and height of the maze
-    private int currentX, currentY;   //stores the current location of the ball
-    private int finalX, finalY;       //stores the finishing point of the maze
+    private int sizeX, sizeY;         // Stores the width and height of the maze
+    private int currentX, currentY;   // Stores the current location of the ball
+    private int finalX, finalY;       // Stores the finishing point of the maze
     private boolean gameComplete;
 
 
