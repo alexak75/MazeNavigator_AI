@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,16 +15,21 @@ import android.view.View;
  */
 public class GameView extends View {
 
+    private static final String TAG = GameView.class.getSimpleName();
+
     public GameView(Context context, Maze maze) {
         super(context);
         this.context = (Activity)context;
         this.maze = maze;
+        maze.setMazeWidth(9);
+        maze.setMazeHeight(9);
         mazeFinishX = maze.getFinalX();
         mazeFinishY = maze.getFinalY();
         mazeSizeX = maze.getMazeWidth();
         mazeSizeY = maze.getMazeHeight();
         line = new Paint();
         line.setColor(getResources().getColor(R.color.line));
+        //line.setStrokeWidth(5);
         red = new Paint();
         red.setColor(getResources().getColor(R.color.position));
         background = new Paint();
@@ -35,8 +41,9 @@ public class GameView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         // Fill in the background
-        canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), background);
-
+        canvas.drawRect(0, 0, width, height, background);
+        //canvas.drawLine(0,0,50,50,line);
+        Log.v(TAG, "Rect drawn");
         boolean[][] hLines = maze.getHorizontalLines();
         boolean[][] vLines = maze.getVerticalLines();
         // Iterate over the boolean arrays to draw walls
@@ -45,7 +52,7 @@ public class GameView extends View {
                 float x = j * totalCellWidth;
                 float y = i * totalCellHeight;
                 if(j < mazeSizeX - 1 && vLines[i][j]) {
-                    // We'll draw a vertical line
+                    // Draw a vertical line
                     canvas.drawLine(x + cellWidth,   //start X
                             y,               //start Y
                             x + cellWidth,   //stop X
@@ -53,7 +60,7 @@ public class GameView extends View {
                             line);
                 }
                 if(i < mazeSizeY - 1 && hLines[i][j]) {
-                    // We'll draw a horizontal line
+                    // Draw a horizontal line
                     canvas.drawLine(x,               // startX
                             y + cellHeight,  // startY
                             x + cellWidth,   // stopX

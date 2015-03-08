@@ -29,6 +29,12 @@ public class Maze implements Serializable {
     public boolean[][] getVerticalLines() {
         return verticalLines;
     }
+    public void setMazeWidth(int sizeX) {
+        this.sizeX = sizeX;
+    }
+    public void setMazeHeight(int sizeY) {
+        this.sizeY = sizeY;
+    }
     public int getMazeWidth() {
         return sizeX;
     }
