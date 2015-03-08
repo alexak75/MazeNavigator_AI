@@ -110,16 +110,16 @@ public class GameView extends View {
     public boolean onKeyDown(int keyCode, KeyEvent evt) {
         boolean moved = false;
         switch(keyCode) {
-            case KeyEvent.KEYCODE_DPAD_UP:
+            case KeyEvent.KEYCODE_W:
                 moved = maze.move(Maze.UP);
                 break;
-            case KeyEvent.KEYCODE_DPAD_DOWN:
+            case KeyEvent.KEYCODE_S:
                 moved = maze.move(Maze.DOWN);
                 break;
-            case KeyEvent.KEYCODE_DPAD_RIGHT:
+            case KeyEvent.KEYCODE_D:
                 moved = maze.move(Maze.RIGHT);
                 break;
-            case KeyEvent.KEYCODE_DPAD_LEFT:
+            case KeyEvent.KEYCODE_A:
                 moved = maze.move(Maze.LEFT);
                 break;
             default:

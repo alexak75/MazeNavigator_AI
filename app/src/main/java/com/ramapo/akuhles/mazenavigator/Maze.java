@@ -7,13 +7,14 @@ import java.io.Serializable;
  */
 public class Maze implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    //private static final long serialVersionUID = 1L;
 
     public static final int UP = 0, DOWN = 1, RIGHT = 2, LEFT = 3;
 
     private boolean[][] verticalLines;
     private boolean[][] horizontalLines;
     private int sizeX, sizeY;         // Stores the width and height of the maze
+    private int startX, startY;
     private int currentX, currentY;   // Stores the current location of the ball
     private int finalX, finalY;       // Stores the finishing point of the maze
     private boolean gameComplete;
@@ -54,10 +55,12 @@ public class Maze implements Serializable {
         return currentY;
     }
     public void setStartPosition(int x, int y) {
-
+        startX = x;
+        startY = y;
     }
     public void setFinalPosition(int x, int y) {
-
+        finalX = x;
+        finalY = y;
     }
     public int getFinalX() {
         return finalX;

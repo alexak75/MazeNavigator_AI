@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Game">
+            android:name=".Game"
+            android:windowSoftInputMode="stateVisible" >
         </activity>
     </application>
 
