@@ -15,14 +15,24 @@ import android.view.View;
  */
 public class GameView extends View {
 
+    private int width, height, lineWidth;
+    private int mazeSizeX, mazeSizeY;
+    private int screenWidth, screenHeight;
+    float cellWidth, cellHeight;
+    float totalCellWidth, totalCellHeight;
+    private int mazeFinishX, mazeFinishY;
+    private Maze maze;
+    private Activity context;
+    private Paint line, red, background;
+
     private static final String TAG = GameView.class.getSimpleName();
 
     public GameView(Context context, Maze maze) {
         super(context);
         this.context = (Activity)context;
         this.maze = maze;
-        maze.setMazeWidth(9);
-        maze.setMazeHeight(9);
+        maze.setMazeWidth(8);       // Set total maze width
+        maze.setMazeHeight(8);      // Set total maze height
         mazeFinishX = maze.getFinalX();
         mazeFinishY = maze.getFinalY();
         mazeSizeX = maze.getMazeWidth();
@@ -42,8 +52,6 @@ public class GameView extends View {
     protected void onDraw(Canvas canvas) {
         // Fill in the background
         canvas.drawRect(0, 0, width, height, background);
-        //canvas.drawLine(0,0,50,50,line);
-        Log.v(TAG, "Rect drawn");
         boolean[][] hLines = maze.getHorizontalLines();
         boolean[][] vLines = maze.getVerticalLines();
         // Iterate over the boolean arrays to draw walls
@@ -70,10 +78,11 @@ public class GameView extends View {
             }
         }
         int currentX = maze.getCurrentX(),currentY = maze.getCurrentY();
-        // Draw the ball
-        canvas.drawCircle((currentX * totalCellWidth)+(cellWidth/2),   // X of center
-                (currentY * totalCellHeight)+(cellWidth/2),  // Y of center
-                (cellWidth*0.45f),                           // Radius
+        // Draw the shaded cell
+        canvas.drawRect((currentX * totalCellWidth),      // startX
+                (currentY * totalCellHeight),               // startY
+                (currentX * totalCellWidth)+(cellWidth),    // endX
+                (currentY * totalCellHeight)+(cellHeight),  // endY
                 red);
         // Draw the finishing point indicator
         canvas.drawText("F",
@@ -84,6 +93,8 @@ public class GameView extends View {
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        screenWidth = w;
+        screenHeight = h;
         width = (w < h)?w:h;    // Check whether the width or height of the screen is smaller
         height = width;         // For now square mazes
         lineWidth = 1;          // For now 1 pixel wide walls
@@ -139,13 +150,4 @@ public class GameView extends View {
         }
         return true;
     }
-
-    private int width, height, lineWidth;
-    private int mazeSizeX, mazeSizeY;
-    float cellWidth, cellHeight;
-    float totalCellWidth, totalCellHeight;
-    private int mazeFinishX, mazeFinishY;
-    private Maze maze;
-    private Activity context;
-    private Paint line, red, background;
 }
