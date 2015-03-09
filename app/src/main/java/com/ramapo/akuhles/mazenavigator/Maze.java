@@ -15,7 +15,7 @@ public class Maze implements Serializable {
     private boolean[][] horizontalLines;
     private int sizeX, sizeY;         // Stores the width and height of the maze
     private int startX, startY;
-    private int currentX, currentY;   // Stores the current location of the ball
+    private int currentX, currentY;   // Stores the current location of the player
     private int finalX, finalY;       // Stores the finishing point of the maze
     private boolean gameComplete;
 
@@ -29,6 +29,12 @@ public class Maze implements Serializable {
     }
     public boolean[][] getVerticalLines() {
         return verticalLines;
+    }
+    public void setStartX(int startX) {
+        currentX = startX;
+    }
+    public void setStartY(int startY) {
+        currentY = startY;
     }
     public void setMazeWidth(int sizeX) {
         this.sizeX = sizeX;
@@ -55,8 +61,8 @@ public class Maze implements Serializable {
         return currentY;
     }
     public void setStartPosition(int x, int y) {
-        startX = x;
-        startY = y;
+        currentX = x;
+        currentY = y;
     }
     public void setFinalPosition(int x, int y) {
         finalX = x;

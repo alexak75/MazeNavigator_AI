@@ -10,13 +10,15 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import java.util.Random;
+
 /**
  * Created by Alex on 3/5/2015.
  */
 public class GameView extends View {
 
     private int width, height, lineWidth;
-    private int mazeSizeX, mazeSizeY;
+    private int mazeSize, mazeSizeX, mazeSizeY;
     private int screenWidth, screenHeight;
     float cellWidth, cellHeight;
     float totalCellWidth, totalCellHeight;
@@ -31,8 +33,9 @@ public class GameView extends View {
         super(context);
         this.context = (Activity)context;
         this.maze = maze;
-        maze.setMazeWidth(8);       // Set total maze width
-        maze.setMazeHeight(8);      // Set total maze height
+        mazeSize = 8;                      // Hard coded for now
+        maze.setMazeWidth(mazeSize);       // Set total maze width
+        maze.setMazeHeight(mazeSize);      // Set total maze height
         mazeFinishX = maze.getFinalX();
         mazeFinishY = maze.getFinalY();
         mazeSizeX = maze.getMazeWidth();
@@ -81,8 +84,8 @@ public class GameView extends View {
         // Draw the shaded cell
         canvas.drawRect((currentX * totalCellWidth),      // startX
                 (currentY * totalCellHeight),               // startY
-                (currentX * totalCellWidth)+(cellWidth),    // endX
-                (currentY * totalCellHeight)+(cellHeight),  // endY
+                (currentX * totalCellWidth) + (cellWidth),    // endX
+                (currentY * totalCellHeight) + (cellHeight),  // endY
                 red);
         // Draw the finishing point indicator
         canvas.drawText("F",
@@ -97,6 +100,8 @@ public class GameView extends View {
         screenHeight = h;
         width = (w < h)?w:h;    // Check whether the width or height of the screen is smaller
         height = width;         // For now square mazes
+        width -= 40;
+        height -= 40;
         lineWidth = 1;          // For now 1 pixel wide walls
         cellWidth = (width - ((float)mazeSizeX*lineWidth)) / mazeSizeX;
         totalCellWidth = cellWidth+lineWidth;

@@ -1,11 +1,17 @@
 package com.ramapo.akuhles.mazenavigator;
 
+import java.util.Random;
+
 /**
  * Created by Alex on 3/5/2015.
  */
 public class MazeCreator {
 
+
+
     public static Maze getMaze(int mazeNo) {
+        Random rand = new Random();
+        int startPos = rand.nextInt(8);
         Maze maze = null;
         if(mazeNo == 1) {
             maze = new Maze();
@@ -30,7 +36,7 @@ public class MazeCreator {
             };
             maze.setVerticalLines(vLines);
             maze.setHorizontalLines(hLines);
-            maze.setStartPosition(0, 0);
+            maze.setStartPosition(0, startPos);
             maze.setFinalPosition(7, 7);
         }
         //other mazes
