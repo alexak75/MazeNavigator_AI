@@ -33,7 +33,7 @@ public class GameView extends View {
         super(context);
         this.context = (Activity)context;
         this.maze = maze;
-        mazeSize = 8;                      // Hard coded for now
+        mazeSize = 8;                      // Hard-coded for now
         maze.setMazeWidth(mazeSize);       // Set total maze width
         maze.setMazeHeight(mazeSize);      // Set total maze height
         mazeFinishX = maze.getFinalX();
