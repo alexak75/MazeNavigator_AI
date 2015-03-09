@@ -29,10 +29,10 @@ public class GameView extends View {
 
     private static final String TAG = GameView.class.getSimpleName();
 
-    public GameView(Context context, Maze maze) {
-        super(context);
+    public GameView(Context context) {
+            super(context);
         this.context = (Activity)context;
-        this.maze = maze;
+        this.maze = MazeCreator.getMaze(1);
         mazeSize = 8;                      // Hard-coded for now
         maze.setMazeWidth(mazeSize);       // Set total maze width
         maze.setMazeHeight(mazeSize);      // Set total maze height

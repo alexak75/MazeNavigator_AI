@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -16,9 +17,8 @@ public class Game extends Activity implements View.OnClickListener {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();    // Get the intent extras
         Maze maze = (Maze)extras.get("maze");  // Retrieve the maze from intent extras
-        GameView view = new GameView(this, maze);
-        setContentView(view);
-        //setContentView(R.layout.game);
+        GameView view = new GameView(this);
+        setContentView(R.layout.game);
     }
 
     public void onClick(View view) {

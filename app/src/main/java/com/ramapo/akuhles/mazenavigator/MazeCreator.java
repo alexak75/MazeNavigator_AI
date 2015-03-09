@@ -7,8 +7,6 @@ import java.util.Random;
  */
 public class MazeCreator {
 
-
-
     public static Maze getMaze(int mazeNo) {
         Random rand = new Random();
         int startPos = rand.nextInt(8);
