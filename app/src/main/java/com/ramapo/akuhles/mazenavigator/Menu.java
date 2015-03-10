@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-/**
- * Created by Alex on 3/4/2015.;
- */
+/*******************************************************************
+        * Name:  Alexander Kuhles                                  *
+        * Project:  Project 2                                      *
+        * Class:  Artificial Intelligence                          *
+        * Date:  March 10, 2015                                    *
+********************************************************************/
 public class Menu extends Activity implements View.OnClickListener {
 
     @Override
@@ -30,7 +33,8 @@ public class Menu extends Activity implements View.OnClickListener {
                 finish();
                 break;
             case R.id.bNew:
-                String[] levels = {"Maze 1", "Maze 2", "Maze 3"};
+                String[] levels = {"Maze 1"};
+                //String[] levels = {"Maze 1", "Maze 2", "Maze 3"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle(getString(R.string.levelSelect));
                 builder.setItems(levels, new DialogInterface.OnClickListener() {

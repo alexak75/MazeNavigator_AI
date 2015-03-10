@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -29,7 +30,17 @@ public class GameView extends View {
 
     private static final String TAG = GameView.class.getSimpleName();
 
-    public GameView(Context context) {
+    public GameView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+
+    }
+
+    public GameView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+
+    }
+
+    public GameView(Context context, Maze maze) {
             super(context);
         this.context = (Activity)context;
         this.maze = MazeCreator.getMaze(1);
@@ -42,7 +53,6 @@ public class GameView extends View {
         mazeSizeY = maze.getMazeHeight();
         line = new Paint();
         line.setColor(getResources().getColor(R.color.line));
-        //line.setStrokeWidth(5);
         red = new Paint();
         red.setColor(getResources().getColor(R.color.position));
         background = new Paint();
@@ -82,10 +92,10 @@ public class GameView extends View {
         }
         int currentX = maze.getCurrentX(),currentY = maze.getCurrentY();
         // Draw the shaded cell
-        canvas.drawRect((currentX * totalCellWidth),      // startX
-                (currentY * totalCellHeight),               // startY
-                (currentX * totalCellWidth) + (cellWidth),    // endX
-                (currentY * totalCellHeight) + (cellHeight),  // endY
+        canvas.drawRect((currentX * totalCellWidth + totalCellWidth/6),      // startX
+                (currentY * totalCellHeight + totalCellHeight/6),               // startY
+                (currentX * totalCellWidth - totalCellWidth/6) + (cellWidth),    // endX
+                (currentY * totalCellHeight - totalCellHeight/6) + (cellHeight),  // endY
                 red);
         // Draw the finishing point indicator
         canvas.drawText("F",

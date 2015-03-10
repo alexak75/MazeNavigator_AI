@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 
 /**
  * Created by Alex on 3/4/2015.
@@ -17,8 +18,8 @@ public class Game extends Activity implements View.OnClickListener {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();    // Get the intent extras
         Maze maze = (Maze)extras.get("maze");  // Retrieve the maze from intent extras
-        GameView view = new GameView(this);
-        setContentView(R.layout.game);
+        GameView view = new GameView(this, maze);
+        setContentView(view);
     }
 
     public void onClick(View view) {
@@ -32,7 +33,7 @@ public class Game extends Activity implements View.OnClickListener {
                 }
                 break;
             case R.id.bSolveMaze:
-
+                // Use a DFS/BFS algorithm to step through the maze until the win condition is met
         }
     }
 }

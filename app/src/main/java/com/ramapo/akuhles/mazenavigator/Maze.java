@@ -19,7 +19,6 @@ public class Maze implements Serializable {
     private int finalX, finalY;       // Stores the finishing point of the maze
     private boolean gameComplete;
 
-
     //setters and getters
     public boolean isGameComplete() {
         return gameComplete;
