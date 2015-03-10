@@ -2,9 +2,12 @@ package com.ramapo.akuhles.mazenavigator;
 
 import java.util.Random;
 
-/**
- * Created by Alex on 3/5/2015.
- */
+/*******************************************************************
+ * Name:  Alexander Kuhles                                         *
+ * Project:  Project 2                                             *
+ * Class:  Artificial Intelligence                                 *
+ * Date:  March 10, 2015                                           *
+ ********************************************************************/
 public class MazeCreator {
 
     // Params: a single integer that determines the maze to be returned

@@ -13,9 +13,12 @@ import android.view.View;
 
 import java.util.Random;
 
-/**
- * Created by Alex on 3/5/2015.
- */
+/*******************************************************************
+ * Name:  Alexander Kuhles                                         *
+ * Project:  Project 2                                             *
+ * Class:  Artificial Intelligence                                 *
+ * Date:  March 10, 2015                                           *
+ ********************************************************************/
 public class GameView extends View {
 
     private int width, height, lineWidth;

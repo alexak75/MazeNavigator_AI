@@ -9,9 +9,12 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
-/**
- * Created by Alex on 3/4/2015.
- */
+/*******************************************************************
+ * Name:  Alexander Kuhles                                         *
+ * Project:  Project 2                                             *
+ * Class:  Artificial Intelligence                                 *
+ * Date:  March 10, 2015                                           *
+ ********************************************************************/
 public class Game extends Activity implements View.OnClickListener {
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);

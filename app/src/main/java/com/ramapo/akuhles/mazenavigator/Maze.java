@@ -2,9 +2,12 @@ package com.ramapo.akuhles.mazenavigator;
 
 import java.io.Serializable;
 
-/**
- * Created by Alex on 3/5/2015.
- */
+/*******************************************************************
+ * Name:  Alexander Kuhles                                         *
+ * Project:  Project 2                                             *
+ * Class:  Artificial Intelligence                                 *
+ * Date:  March 10, 2015                                           *
+ ********************************************************************/
 public class Maze implements Serializable {
 
     //private static final long serialVersionUID = 1L;
