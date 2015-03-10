@@ -47,17 +47,17 @@ public class GameView extends View {
         mazeSize = 8;                      // Hard-coded for now
         maze.setMazeWidth(mazeSize);       // Set total maze width
         maze.setMazeHeight(mazeSize);      // Set total maze height
-        mazeFinishX = maze.getFinalX();
+        mazeFinishX = maze.getFinalX();    // Sets the end point of the maze
         mazeFinishY = maze.getFinalY();
-        mazeSizeX = maze.getMazeWidth();
-        mazeSizeY = maze.getMazeHeight();
+        mazeSizeX = maze.getMazeWidth();   // Sets the width variable of the maze
+        mazeSizeY = maze.getMazeHeight();  // Sets the height variable of the maze
         line = new Paint();
         line.setColor(getResources().getColor(R.color.line));
         red = new Paint();
         red.setColor(getResources().getColor(R.color.position));
         background = new Paint();
         background.setColor(getResources().getColor(R.color.maze_bg));
-        setFocusable(true);
+        setFocusable(true);                // Allows the maze to be focusable/interactive
         this.setFocusableInTouchMode(true);
     }
 
@@ -74,10 +74,10 @@ public class GameView extends View {
                 float y = i * totalCellHeight;
                 if(j < mazeSizeX - 1 && vLines[i][j]) {
                     // Draw a vertical line
-                    canvas.drawLine(x + cellWidth,   //start X
-                            y,               //start Y
-                            x + cellWidth,   //stop X
-                            y + cellHeight,  //stop Y
+                    canvas.drawLine(x + cellWidth,   // start X
+                            y,               // start Y
+                            x + cellWidth,   // stop X
+                            y + cellHeight,  // stop Y
                             line);
                 }
                 if(i < mazeSizeY - 1 && hLines[i][j]) {
@@ -108,12 +108,12 @@ public class GameView extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         screenWidth = w;
         screenHeight = h;
-        width = (w < h)?w:h;    // Check whether the width or height of the screen is smaller
-        height = width;         // For now square mazes
-        width -= 40;
+        width = (w < h)?w:h;    // Check whether the width or height of the screen is smaller and assign it to width
+        height = width;         // Square maze for now
+        width -= 40;            // Pads the spacing a bit to prevent clipping with the keyboard
         height -= 40;
-        lineWidth = 1;          // For now 1 pixel wide walls
-        cellWidth = (width - ((float)mazeSizeX*lineWidth)) / mazeSizeX;
+        lineWidth = 1;          // 1 pixel wide walls for now
+        cellWidth = (width - ((float)mazeSizeX*lineWidth)) / mazeSizeX;     // Resize the maze on creation/screen rotation
         totalCellWidth = cellWidth+lineWidth;
         cellHeight = (height - ((float)mazeSizeY*lineWidth)) / mazeSizeY;
         totalCellHeight = cellHeight+lineWidth;
@@ -123,7 +123,7 @@ public class GameView extends View {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent evt) {
-        boolean moved = false;
+        boolean moved = false; // Is set to true if the player moves
         switch(keyCode) {
             case KeyEvent.KEYCODE_W:
                 moved = maze.move(Maze.UP);
@@ -144,7 +144,7 @@ public class GameView extends View {
             // The ball was moved so we'll redraw the view
             invalidate();
             if(maze.isGameComplete()) {
-                // Game completed
+                // Game completed - displays the new activity
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle(context.getText(R.string.finished_title));
                 LayoutInflater inflater = context.getLayoutInflater();

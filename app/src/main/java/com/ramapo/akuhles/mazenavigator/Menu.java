@@ -30,13 +30,13 @@ public class Menu extends Activity implements View.OnClickListener {
         // Check which button was clicked with its id
         switch(view.getId()) {
             case R.id.bExit:
-                finish();
+                finish();                                                // Close the application
                 break;
             case R.id.bNew:
                 String[] levels = {"Maze 1"};
                 //String[] levels = {"Maze 1", "Maze 2", "Maze 3"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle(getString(R.string.levelSelect));
+                builder.setTitle(getString(R.string.levelSelect));                         // Set the text for the button
                 builder.setItems(levels, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int item) {
                         Intent game = new Intent(Menu.this,Game.class);  // Create an Intent to launch the Game Activity
@@ -45,7 +45,7 @@ public class Menu extends Activity implements View.OnClickListener {
                         startActivity(game);
                     }
                 });
-                AlertDialog alert = builder.create();
+                AlertDialog alert = builder.create();                    // Create the dialog
                 alert.show();
         }
     }

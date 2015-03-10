@@ -7,6 +7,7 @@ import java.util.Random;
  */
 public class MazeCreator {
 
+    // Params: a single integer that determines the maze to be returned
     public static Maze getMaze(int mazeNo) {
         Random rand = new Random();
         int startPos = rand.nextInt(8);
@@ -37,7 +38,7 @@ public class MazeCreator {
             maze.setStartPosition(0, startPos);
             maze.setFinalPosition(7, 7);
         }
-        //other mazes
+        // Other mazes go here (2, 3, etc.)
         return maze;
     }
 

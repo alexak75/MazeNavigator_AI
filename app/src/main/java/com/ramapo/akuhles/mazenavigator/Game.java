@@ -19,7 +19,7 @@ public class Game extends Activity implements View.OnClickListener {
         Bundle extras = intent.getExtras();    // Get the intent extras
         Maze maze = (Maze)extras.get("maze");  // Retrieve the maze from intent extras
         GameView view = new GameView(this, maze);
-        setContentView(view);
+        setContentView(view);                  // Set the content view
     }
 
     public void onClick(View view) {
@@ -27,6 +27,7 @@ public class Game extends Activity implements View.OnClickListener {
         switch(view.getId()) {
             case R.id.bShowKeyboard:
                 if (view.requestFocus()) {
+                    // Show keyboard
                     InputMethodManager imm = (InputMethodManager)
                     getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.showSoftInput(view, InputMethodManager.SHOW_FORCED);

@@ -74,7 +74,7 @@ public class Maze implements Serializable {
         return finalY;
     }
 
-
+    // Params: an integer that defines the direction that the player moves in
     public boolean move(int direction) {
         boolean moved = false;
         if(direction == UP) {
